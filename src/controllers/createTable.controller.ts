@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
+import { getTableService } from "../services/aws/getTable.service";
+import { productTableSchema } from "../config/product-table.schema";
 
 export async function CreateTableController(req:Request, res:Response){
     try{
-        const tableInfo = false; // add service if table exists
-        
+        const tableInfo = await getTableService(productTableSchema.TableName);
 
         if(tableInfo){
             return res.status(400).json({
