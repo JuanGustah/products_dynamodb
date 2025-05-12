@@ -8,9 +8,10 @@ export async function CreateTableController(req:Request, res:Response){
         const tableInfo = await getTableService(productTableSchema.TableName);
 
         if(tableInfo){
-            return res.status(400).json({
+            res.status(400).json({
                 "error": "Table already exists!"
             })
+            return;
         }
 
         const table = await createTableService(productTableSchema);
