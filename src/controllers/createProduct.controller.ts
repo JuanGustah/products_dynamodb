@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
+import { productBodyValidator } from "../validators/productBody.validator";
 
 export async function CreateProductController(req:Request, res:Response){
     try{
         const productBody = req.body;
 
-        //validate body
+        const product = productBodyValidator(productBody);
 
         //call service
 
